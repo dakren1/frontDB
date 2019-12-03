@@ -1,0 +1,65 @@
+<app-cabecera></app-cabecera>
+<app-navbar></app-navbar>
+<br>
+<br>
+
+<div id="page-wrapper">
+    <div id="page-inner">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Rol</h2>
+            </div>
+        </div>
+        <!-- /. ROW  -->
+        <!--Nombre	Telefono	Direccion	Usuario	Dni	Modificar-->
+        <hr>
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <h4></h4>
+                <div id="formulario">
+
+                    <div class="input-group">
+                        <span class="input-group-addon">Nombre</span>
+                        <input type="text" [(ngModel)]="rol.nombre" name="Nombre" required class="form-control"
+                            placeholder="Ingrese aqui el nombre del rol" />
+                    </div>
+                    <br>
+                    <div class="input-group">
+                        <span class="input-group-addon">Descripcion</span>
+                        <input type="text" class="form-control" [(ngModel)]="rol.descripcion" required
+                            placeholder="Ingrese aqui una decripcion" />
+                    </div>
+                    <br>
+                    <!--
+                    <input type="checkbox" name="Permiso" id="Permiso" class="form-check-input">
+                    <label class="form-check-label" for="Permiso">Permiso</label>-->
+                    <div *ngIf="!editando">
+                        <div *ngFor="let permiso of permisos">
+                            <input type="checkbox" (click)=clickDato(permiso.id)  name="{{permiso.nombre}}" id="{{permiso.nombre}}"
+                                class="form-check-input">
+                            <label class="form-check-label" for="{{permiso.nombre}}">{{permiso.nombre}}</label>
+                        </div>
+                    </div>
+                    <div *ngIf="editando">
+                        <div *ngFor="let permiso of permisosChequeados">
+                            <div *ngIf="permiso.idpermiso!=null">
+                                <input type="checkbox" (click)=clickDato(permiso.id) checked name="{{permiso.nombre}}" id="{{permiso.nombre}}"
+                                    class="form-check-input">
+                                <label class="form-check-label" for="{{permiso.nombre}}">{{permiso.nombre}}</label>
+                            </div>
+                            <div *ngIf="permiso.idpermiso==null">
+                                <input type="checkbox" (click)=clickDato(permiso.id) name="{{permiso.nombre}}" id="{{permiso.nombre}}"
+                                    class="form-check-input">
+                                <label class="form-check-label" for="{{permiso.nombre}}">{{permiso.nombre}}</label>
+                            </div>
+                        </div>
+                    </div>
+                    <input class="btn btn-primary espacio" type="submit" (click)="guardar()" value="Guardar">
+                    <a routerLink="/rol" class="btn btn-danger">Salir</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-pie></app-pie>

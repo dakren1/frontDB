@@ -1,0 +1,67 @@
+<app-cabecera></app-cabecera>
+<app-navbar></app-navbar>
+<br>
+<br>
+
+<!-- /. NAV SIDE  -->
+<div id="page-wrapper">
+    <div id="page-inner">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Usuario</h2>
+            </div>
+        </div>
+        <!-- /. ROW  -->
+        <!--Nombre	Telefono	Direccion	Usuario	Dni	Modificar-->
+        <hr>
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <h4></h4>
+                <div>
+
+                    <div class="input-group">
+                        <span class="input-group-addon">Nombre de usuario</span>
+                        <input type="text" [(ngModel)]="usuario.usuario" class="form-control"
+                            placeholder="Ingrese aqui el nombre de usuario" />
+                    </div>
+                    <br>
+                    <div class="input-group">
+                        <span class="input-group-addon">Email</span>
+                        <input type="text" [(ngModel)]="usuario.email" class="form-control"
+                            placeholder="Ingrese aqui el email" />
+                    </div>
+                    <br>
+                    <div class="input-group">
+                        <span class="input-group-addon">Contraseña</span>
+                        <input type="text" [(ngModel)]="usuario.password" class="form-control"
+                            placeholder="Ingrese aqui una contraseña" />
+                    </div>
+                    <br>
+                    <div class="input-group">
+                        <span class="input-group-addon">Nombre</span>
+                        <input type="text" class="form-control" [(ngModel)]="usuario.nombre"
+                            placeholder="Ingrese aqui una direccion" />
+                    </div>
+                    <br>
+                    <div class="input-group">
+                        <label for="seleccion">Rol</label>
+                        <select  name="" (change)="cambio($event)" class="form-control" id="seleccion">
+                            <option *ngFor="let rol of roles" value="{{rol.id}}">{{rol.nombre}}</option>
+                        </select>
+                    </div>
+                    <br>
+                    <input (click)="guardar()" class="btn btn-primary" style="margin-right:3px;" type="submit"
+                        value="Guardar">
+                    <a routerLink="/usuario" class="btn btn-danger">Salir</a>
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+
+<app-pie></app-pie>
